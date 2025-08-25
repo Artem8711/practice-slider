@@ -16,3 +16,39 @@ const slider = [
       alt: `landscape4`
    }
 ];
+
+let currentSlideIndex = 0;
+
+const slideImg = document.querySelector(`img`);
+
+slideImg.src = slider[0].src;
+slideImg.alt = slider[0].alt;
+
+//////////////////////////////
+
+const [prevBtn, nextBtn] = document.querySelectorAll(`.navBtn`);
+
+function nextSlideHandler() {
+   if (currentSlideIndex < slider.length - 1) {
+      currentSlideIndex++;
+   } else {
+      currentSlideIndex = 0;
+   }
+
+   slideImg.src = slider[currentSlideIndex].src;
+   slideImg.alt = slider[currentSlideIndex].alt;
+}
+
+nextBtn.addEventListener(`click`, nextSlideHandler);
+
+function prevSlideHandler() {
+   if (currentSlideIndex > 0) {
+      currentSlideIndex--;
+   } else {
+      currentSlideIndex = slider.length - 1;
+   }
+
+   slideImg.src = slider[currentSlideIndex].src;
+   slideImg.alt = slider[currentSlideIndex].alt;
+}
+prevBtn.addEventListener(`click`, prevSlideHandler);
